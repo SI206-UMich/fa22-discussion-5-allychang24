@@ -1,12 +1,14 @@
+from cgi import print_arguments
+from sys import addaudithook
 import unittest
 
 # Counts the number of a's in a sentence (e.g., a string)
 def count_a(sentence):
 	total = 0
-	for i in range(len(sentence) - 1):
-		if i == 'a':
+	for i in range(len(sentence)):
+		if sentence [i] == 'a':
 			total += 1
-	return total
+	return (total)
 
 
 # Item class
@@ -38,10 +40,14 @@ class Warehouse:
 
 	# Adds an item to the warehouse	
 	def add_item(self, item):
-		pass
+		self.items.append(item)
+	
 
 	# Returns the item in the warehouse with the most stock		
 	def get_max_stock(self):
+		for item in len(self.items):
+			
+
 		pass
 	
 	# Returns the item in the warehouse with the highest price
@@ -55,6 +61,8 @@ class TestAllMethods(unittest.TestCase):
 
 	# SetUp -- we create a bunch of items for you to use in your tests.
 	def setUp(self):
+		ware = Warehouse()
+
 		self.item1 = Item("Beer", 6, 20)
 		self.item2 = Item("Cider", 5, 25)
 		self.item3 = Item("Water", 1, 100)
@@ -63,16 +71,28 @@ class TestAllMethods(unittest.TestCase):
 
 	## Check to see whether count_a works
 	def test_count_a(self):
-		pass
-
+		self.assertEqual(count_a("this is a test"), 1)
+		self.assertEqual(count_a("aaa"), 3)
 
 	## Check to see whether you can add an item to the warehouse
 	def test_add_item(self):
-		pass
+
+		shop = Warehouse()
+
+		shop.add_item (self.item1)
+
+		check = False
+
+		if self.item1 in shop.items:
+			check = True
+	
+		self.assertTrue(check)
+
 
 
 	## Check to see whether warehouse correctly returns the item with the most stock
 	def test_warehouse_max_stocks(self):
+
 		pass
 
 
@@ -82,7 +102,10 @@ class TestAllMethods(unittest.TestCase):
 		
 
 def main():
+	test_ware = Warehouse()
+	
 	unittest.main()
+	unittest
 
 if __name__ == "__main__":
 	main()
