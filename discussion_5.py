@@ -44,20 +44,24 @@ class Warehouse:
 	
 
 	# Returns the item in the warehouse with the most stock		
-	def get_max_stock(self, item):
-		max_stock = item[0]
-		for i in item:
+	def get_max_stock(self):
+		max_stock = self.items[0]
+		for i in self.items:
 			if i.stock > max_stock.stock:
-				
+				max_stock = i
+		
+		return max_stock
+
 
 	
 	# Returns the item in the warehouse with the highest price
 	def get_max_price(self):
-		max_price = self.items [0]
-		for price in self.items:
-			if price > max_price:
-				max_price = price
-		print (max_price)
+		max_price = self.items[0]
+		for item in self.items:
+			if item.price > max_price.price:
+				max_price = item
+		
+		return max_price
 
 
 
@@ -106,7 +110,7 @@ class TestAllMethods(unittest.TestCase):
 		shop.add_item(self.item3)
 		shop.add_item(self.item4)
 
-		most = shop.get_max_stock(shop.items)
+		most = shop.get_max_stock()
 		
 		self.assertEqual(most, self.item3)
 	
@@ -117,15 +121,20 @@ class TestAllMethods(unittest.TestCase):
 
 		shop = Warehouse()
 
-		max
-		pass
+		shop.add_item(self.item1)
+		shop.add_item(self.item2)
+		shop.add_item(self.item3)
+		shop.add_item(self.item4)
+
+		highest = shop.get_max_price()
+
+		self.assertEqual(highest, self.item1)
 		
 
 def main():
 	test_ware = Warehouse()
 	
 	unittest.main()
-	unittest
 
 if __name__ == "__main__":
 	main()
